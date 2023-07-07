@@ -1,21 +1,72 @@
 ---
+name: tethys
 kind: pipeline
 type: docker
-name: en
 
 steps:
   - name: greeting
     image: alpine
     commands:
-      - echo hello world
+      - echo 'Hello from ${DRONE_STAGE_MACHINE}'
+
+node:
+  m_name: tethys
 
 ---
+name: main-web
 kind: pipeline
 type: docker
-name: fr
 
 steps:
   - name: greeting
     image: alpine
     commands:
-      - echo bonjour monde
+      - echo 'Hello from ${DRONE_STAGE_MACHINE}'
+
+node:
+  m_name: main-web
+
+---
+name: oracle-mini-1
+kind: pipeline
+type: docker
+
+steps:
+  - name: greeting
+    image: alpine
+    commands:
+      - echo 'Hello from ${DRONE_STAGE_MACHINE}'
+
+node:
+  m_name: oracle-mini-1
+
+---
+name: oracle-mini-2
+kind: pipeline
+type: docker
+
+steps:
+  - name: greeting
+    image: alpine
+    commands:
+      - echo 'Hello from ${DRONE_STAGE_MACHINE}'
+
+node:
+  m_name: oracle-mini-2
+
+---
+name: oracle-arm-1
+kind: pipeline
+type: docker
+
+platform:
+  arch: arm64
+
+steps:
+  - name: greeting
+    image: alpine
+    commands:
+      - echo 'Hello from ${DRONE_STAGE_MACHINE}'
+
+node:
+  m_name: oracle-arm-1
